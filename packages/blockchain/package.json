@@ -1,0 +1,22 @@
+{
+  "name": "@voting/blockchain",
+  "version": "0.1.0",
+  "description": "Blockchain core - Hyperledger Besu smart contracts for voting",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "hardhat compile",
+    "test": "hardhat test",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:testnet": "hardhat run scripts/deploy.ts --network besu_testnet",
+    "coverage": "hardhat coverage",
+    "typechain": "hardhat typechain"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "hardhat": "^2.19.0",
+    "solhint": "^4.1.0"
+  }
+}

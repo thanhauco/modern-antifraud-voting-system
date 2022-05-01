@@ -1,0 +1,40 @@
+{
+  "name": "modern-antifraud-voting",
+  "version": "0.1.0",
+  "description": "Modern Anti-Fraud Voting System - Quantum-resistant blockchain voting platform for US government elections",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "clean": "turbo clean && rm -rf node_modules",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "prettier": "^3.2.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "blockchain",
+    "voting",
+    "election",
+    "anti-fraud",
+    "post-quantum-cryptography",
+    "zero-knowledge-proofs",
+    "government"
+  ],
+  "author": "Thanh Vu <thanhauco@gmail.com>",
+  "license": "UNLICENSED"
+}
