@@ -1,0 +1,30 @@
+{
+  "name": "@voting/crypto",
+  "version": "0.1.0",
+  "description": "Cryptography module - Post-quantum cryptography and zero-knowledge proofs",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "build:circuits": "circom circuits/*.circom --r1cs --wasm --sym -o build/",
+    "setup:trusted": "snarkjs groth16 setup build/vote_validity.r1cs pot12_final.ptau build/vote_validity.zkey"
+  },
+  "dependencies": {
+    "snarkjs": "^0.7.0",
+    "circomlibjs": "^0.1.7",
+    "ffjavascript": "^0.2.60"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.2.0"
+  }
+}
