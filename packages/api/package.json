@@ -1,0 +1,35 @@
+{
+  "name": "@voting/api",
+  "version": "0.1.0",
+  "description": "Backend API - Fastify-based voting services",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "build": "tsup src/app.ts --format esm",
+    "start": "node dist/app.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "fastify": "^4.26.0",
+    "@fastify/cors": "^9.0.0",
+    "@fastify/helmet": "^11.1.0",
+    "@fastify/rate-limit": "^9.1.0",
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.0.0",
+    "pino": "^8.19.0",
+    "zod": "^3.22.0",
+    "@voting/crypto": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.2.0"
+  }
+}
