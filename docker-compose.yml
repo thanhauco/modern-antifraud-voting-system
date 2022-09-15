@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: packages/api/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - LOG_LEVEL=debug
+      - DATABASE_URL=postgresql://voting:voting@postgres:5432/voting
+      - REDIS_URL=redis://redis:6379
+      - BESU_RPC_URL=http://besu:8545
+    depends_on:
+      - postgres
+      - redis
+      - besu
+    networks:
+      - voting-network
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=voting
+      - POSTGRES_PASSWORD=voting
+      - POSTGRES_DB=voting
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - voting-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - voting-network
+
+  besu:
+    image: hyperledger/besu:latest
+    command: >
+      --network=dev --miner-enabled --miner-coinbase=0xfe3b557e8fb62b89f4916b721be55ceb828dbd73 --rpc-http-enabled --rpc-http-api=ETH,NET,WEB3,DEBUG,MINER,ADMIN,TXPOOL --rpc-http-host=0.0.0.0 --rpc-http-cors-origins="*" --host-allowlist="*" --data-path=/opt/besu/data
+    ports:
+      - "8545:8545"
+      - "8546:8546"
+    volumes:
+      - besu-data:/opt/besu/data
+    networks:
+      - voting-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./infrastructure/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    networks:
+      - voting-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    networks:
+      - voting-network
+
+networks:
+  voting-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  redis-data:
+  besu-data:
+  prometheus-data:
+  grafana-data:
