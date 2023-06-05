@@ -1,0 +1,31 @@
+apiVersion: v2
+name: voting-system
+description: Modern Anti-Fraud Voting System Helm Chart
+type: application
+version: 1.0.0
+appVersion: "0.1.0"
+
+dependencies:
+  - name: postgresql
+    version: "13.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
+  - name: redis
+    version: "18.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: redis.enabled
+  - name: besu
+    version: "1.x.x"
+    repository: "https://charts.consensys.net"
+    condition: besu.enabled
+
+maintainers:
+  - name: Thanh Vu
+    email: thanhauco@gmail.com
+
+keywords:
+  - voting
+  - blockchain
+  - election
+  - government
+  - security
