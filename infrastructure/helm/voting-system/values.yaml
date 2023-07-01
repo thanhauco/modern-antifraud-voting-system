@@ -1,0 +1,107 @@
+# Default values for voting-system
+replicaCount: 3
+
+image:
+  repository: ghcr.io/voting/api
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets:
+  - name: ghcr-secret
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: "voting-api"
+
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "3000"
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+  hosts:
+    - host: vote.wa.gov
+      paths:
+        - path: /api
+          pathType: Prefix
+  tls:
+    - secretName: voting-tls
+      hosts:
+        - vote.wa.gov
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 50
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: voting-api
+          topologyKey: kubernetes.io/hostname
+
+# Application configuration
+config:
+  logLevel: info
+  corsOrigin: "https://vote.wa.gov"
+  
+# Secrets (injected via external secrets or sealed secrets)
+secrets:
+  databaseUrl: ""
+  redisUrl: ""
+  jwtSecret: ""
+
+# PostgreSQL subchart configuration
+postgresql:
+  enabled: false  # Use Azure managed service in production
+
+# Redis subchart configuration
+redis:
+  enabled: false  # Use Azure managed service in production
+
+# Besu subchart configuration  
+besu:
+  enabled: true
+  node:
+    replicaCount: 4
