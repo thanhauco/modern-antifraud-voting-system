@@ -1,5 +1,6 @@
 import { FastifyPluginAsync } from "fastify";
 import { z } from "zod";
+import { randomBytes } from "crypto";
 
 // Validation schemas
 const loginSchema = z.object({
@@ -28,8 +29,16 @@ export interface AuthenticatedVoter {
 export const authRoutes: FastifyPluginAsync = async (fastify) => {
   /**
    * Authenticate voter with Login.gov
+   * Rate limited: 5 attempts per minute
    */
-  fastify.post<{ Body: z.infer<typeof loginSchema> }>("/login", async (request, reply) => {
+  fastify.post<{ Body: z.infer<typeof loginSchema> }>("/login", {
+    config: {
+      rateLimit: {
+        max: 5,
+        timeWindow: '1 minute'
+      }
+    }
+  }, async (request, reply) => {
     const body = loginSchema.parse(request.body);
     
     // TODO: Integrate with actual Login.gov OAuth
@@ -85,8 +94,11 @@ export const authRoutes: FastifyPluginAsync = async (fastify) => {
   });
 };
 
+/**
+ * Generate cryptographically secure session token
+ * Uses Node.js crypto module for better security
+ */
 function generateSessionToken(): string {
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  return Array.from(array, (b) => b.toString(16).padStart(2, "0")).join("");
+  return randomBytes(32).toString("hex");
 }
+
