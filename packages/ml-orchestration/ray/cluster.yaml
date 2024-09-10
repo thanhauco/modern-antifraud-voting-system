@@ -1,0 +1,59 @@
+# Ray Cluster Configuration for Modern Anti-Fraud Voting System
+# Optimized for distributed ML training and high-throughput inference
+
+cluster_name: voting-ml-cluster
+
+# The maximum number of workers nodes to launch in addition to the head node.
+max_workers: 10
+
+# Cloud-provider-specific configuration.
+provider:
+    type: aws
+    region: us-gov-west-1
+    availability_zone: us-gov-west-1a
+    cache_stopped_nodes: true
+
+# How Ray will authenticate with newly launched nodes.
+auth:
+    ssh_user: ubuntu
+
+# Node specifications
+available_node_types:
+    head_node:
+        min_workers: 0
+        max_workers: 0
+        node_config:
+            InstanceType: m5.2xlarge
+            ImageId: ami-0abcdef1234567890
+        resources: {"CPU": 8, "memory": 32000}
+        
+    cpu_worker:
+        min_workers: 2
+        max_workers: 8
+        node_config:
+            InstanceType: c5.4xlarge
+            ImageId: ami-0abcdef1234567890
+        resources: {"CPU": 16, "memory": 32000}
+
+    gpu_worker:
+        min_workers: 0
+        max_workers: 4
+        node_config:
+            InstanceType: g4dn.xlarge
+            ImageId: ami-0abcdef1234567890  # Deep Learning AMI
+        resources: {"CPU": 4, "memory": 16000, "GPU": 1}
+
+# Boot commands
+setup_commands:
+    - pip install -U ray[default] ray[serve] torch transformers scikit-learn
+    - pip install -e .
+
+# Custom head node start command
+head_start_ray_commands:
+    - ray stop
+    - ray start --head --port=6379 --object-manager-port=8076 --autoscaling-config=~/ray_bootstrap_config.yaml --dashboard-host=0.0.0.0
+
+# Worker start command
+worker_start_ray_commands:
+    - ray stop
+    - ray start --address=$RAY_HEAD_IP:6379
