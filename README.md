@@ -14,6 +14,8 @@ This system is designed to enable secure, transparent, and verifiable elections 
 - ⛓️ **Blockchain Core** - Hyperledger Besu for immutable vote records
 - 🔮 **Quantum RNG** - Google Quantum integration for true randomness
 - ♿ **Accessibility** - WCAG 2.2 AAA compliance
+- 🕵️ **Graph Intelligence** - Fraud ring detection using GNNs
+- 🌐 **Distributed AI** - Privacy-preserving Federated Learning via Ray
 
 ### Technology Stack
 
@@ -25,7 +27,7 @@ This system is designed to enable secure, transparent, and verifiable elections 
 | ZK Proofs | Circom + SnarkJS |
 | Backend | Node.js + Fastify + Rust |
 | Frontend | Next.js 14 + React |
-| ML/AI | Python + PyTorch |
+| ML/AI | Python + PyTorch + Ray |
 | Infrastructure | Azure Government + Kubernetes |
 | Identity | Login.gov + REAL ID |
 
@@ -37,6 +39,7 @@ modern-antifraud-voting/
 │   ├── blockchain/       # Smart contracts & Besu config
 │   ├── crypto/           # PQC & ZKP implementations
 │   ├── antifraud/        # Fraud detection & control
+│   ├── ml-orchestration/ # Distributed AI (Ray)
 │   ├── api/              # Backend services
 │   ├── web/              # Voter portal
 │   └── admin/            # Admin dashboard
@@ -75,6 +78,8 @@ pnpm dev
 4. **Phase 4: Frontend** - Voter portal, admin dashboard
 5. **Phase 5: Anti-Fraud** - Detection, prevention, control center
 6. **Phase 6: Infrastructure** - Azure Government deployment
+7. **Phase 7: Advanced AI** - GNNs, Transformers, Federated Learning
+8. **Phase 8: Scaling** - Ray cluster, distributed inference
 
 ## 🔒 Security & Compliance
 
