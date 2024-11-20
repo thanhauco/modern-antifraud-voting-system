@@ -16,6 +16,12 @@ This system is designed to enable secure, transparent, and verifiable elections 
 - ♿ **Accessibility** - WCAG 2.2 AAA compliance
 - 🕵️ **Graph Intelligence** - Fraud ring detection using GNNs
 - 🌐 **Distributed AI** - Privacy-preserving Federated Learning via Ray
+- 🖊️ **Signature Verification** - Siamese CNN for mail-in ballots
+- 🧠 **Anomaly Detection** - VAE for voting pattern analysis
+- 📊 **Vote Forecasting** - Temporal Fusion Transformer
+- 🤖 **Bot Detection** - GAN-based adversarial discriminator
+- 📝 **Disinfo Detection** - BERT NLP for influence campaigns
+- 🎯 **Adaptive Thresholds** - Reinforcement Learning optimization
 
 ### Technology Stack
 
@@ -39,6 +45,7 @@ modern-antifraud-voting/
 │   ├── blockchain/       # Smart contracts & Besu config
 │   ├── crypto/           # PQC & ZKP implementations
 │   ├── antifraud/        # Fraud detection & control
+│   │   └── models/       # ML/NN models (CNN, VAE, BERT, GAN, RL)
 │   ├── ml-orchestration/ # Distributed AI (Ray)
 │   ├── api/              # Backend services
 │   ├── web/              # Voter portal
@@ -54,14 +61,15 @@ modern-antifraud-voting/
 - Node.js >= 20.0.0
 - pnpm >= 9.0.0
 - Rust >= 1.75.0
+- Python >= 3.10 (for ML models)
 - Docker & Docker Compose
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/thanhauco/modern-antifraud-voting.git
-cd modern-antifraud-voting
+git clone https://github.com/thanhauco/modern-antifraud-voting-system.git
+cd modern-antifraud-voting-system
 
 # Install dependencies
 pnpm install
@@ -80,6 +88,7 @@ pnpm dev
 6. **Phase 6: Infrastructure** - Azure Government deployment
 7. **Phase 7: Advanced AI** - GNNs, Transformers, Federated Learning
 8. **Phase 8: Scaling** - Ray cluster, distributed inference
+9. **Phase 9: Neural Networks** - CNN, VAE, BERT, GAN, RL agents
 
 ## 🔒 Security & Compliance
 
