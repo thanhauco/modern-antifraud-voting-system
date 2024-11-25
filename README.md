@@ -90,6 +90,17 @@ pnpm dev
 8. **Phase 8: Scaling** - Ray cluster, distributed inference
 9. **Phase 9: Neural Networks** - CNN, VAE, BERT, GAN, RL agents
 
+### 🧠 Phase 9: Advanced ML & Neural Networks
+
+| # | Module | File | Architecture |
+|---|--------|------|--------------|
+| 1 | **Signature Verifier** | `models/vision/signature_verifier.py` | Siamese CNN with contrastive loss |
+| 2 | **Pattern VAE** | `models/generative/pattern_vae.py` | Variational Autoencoder |
+| 3 | **Vote Forecaster** | `models/timeseries/vote_forecaster.py` | Temporal Fusion Transformer |
+| 4 | **Bot Discriminator** | `models/adversarial/bot_discriminator.py` | GAN (Generator + Discriminator) |
+| 5 | **Disinfo Detector** | `models/nlp/disinfo_detector.py` | BERT multi-label classifier |
+| 6 | **Adaptive Thresholds** | `models/rl/adaptive_threshold.py` | Deep Q-Network (DQN) |
+
 ## 🔒 Security & Compliance
 
 - FedRAMP High certified
