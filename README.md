@@ -128,10 +128,6 @@ pnpm dev
 - EAC VVSG 2.0 certified
 - Section 508 accessible
 
-## 📄 License
-
-This project is proprietary and intended for US Government use only.
-
-## 👥 Contributors
+##  Contributors
 
 - **Thanh Vu** - Lead Developer
