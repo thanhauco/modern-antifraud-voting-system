@@ -91,6 +91,10 @@ pnpm dev
 9. **Phase 9: Neural Networks** - CNN, VAE, BERT, GAN, RL agents
 10. **Phase 10: Quantum Computing** - QRNG, QKD, QAOA optimization
 11. **Phase 11: Hyperscale** - 100K+ TPS, event streaming, distributed cache
+12. **Phase 12: Observability** - OpenTelemetry tracing, Chaos Engineering
+13. **Phase 13: Privacy** - Homomorphic encryption, MPC tallying
+14. **Phase 14: Edge Computing** - Offline voting, edge nodes
+15. **Phase 15: AI Explainability** - SHAP/LIME, Model Cards, bias auditing
 
 ### 🧠 Phase 9: Advanced ML & Neural Networks
 
@@ -120,6 +124,33 @@ pnpm dev
 | 2 | **Event Pipeline** | `scaling/streaming/event_pipeline.py` | Millions of events/sec |
 | 3 | **Distributed Cache** | `scaling/caching/distributed_cache.py` | Redis Cluster multi-tier |
 
+### 📊 Phase 12: Observability & Chaos Engineering
+
+| # | Module | File | Purpose |
+|---|--------|------|---------|
+| 1 | **OpenTelemetry Tracer** | `observability/tracing/otel_tracer.py` | Distributed tracing |
+| 2 | **Chaos Monkey** | `observability/chaos/chaos_monkey.py` | Fault injection testing |
+
+### 🔐 Phase 13: Cryptographic Privacy
+
+| # | Module | File | Purpose |
+|---|--------|------|---------|
+| 1 | **Homomorphic Encryption** | `crypto/privacy/homomorphic.py` | Compute on encrypted votes |
+| 2 | **MPC Tally** | `crypto/privacy/mpc_tally.py` | Distributed secret sharing |
+
+### 📡 Phase 14: Edge Computing
+
+| # | Module | File | Purpose |
+|---|--------|------|---------|
+| 1 | **Edge Voting Node** | `edge/node/edge_voting_node.py` | Offline-capable polling stations |
+
+### 🔍 Phase 15: AI Explainability
+
+| # | Module | File | Purpose |
+|---|--------|------|---------|
+| 1 | **SHAP/LIME Explainer** | `explainability/shap_lime_explainer.py` | Feature attribution |
+| 2 | **Model Cards** | `explainability/model_cards.py` | Documentation & bias audits |
+
 ## 🔒 Security & Compliance
 
 - FedRAMP High certified
@@ -128,6 +159,6 @@ pnpm dev
 - EAC VVSG 2.0 certified
 - Section 508 accessible
 
-##  Contributors
+## 👥 Contributors
 
 - **Thanh Vu** - Lead Developer
