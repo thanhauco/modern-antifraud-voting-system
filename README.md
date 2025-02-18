@@ -95,6 +95,7 @@ pnpm dev
 13. **Phase 13: Privacy** - Homomorphic encryption, MPC tallying
 14. **Phase 14: Edge Computing** - Offline voting, edge nodes
 15. **Phase 15: AI Explainability** - SHAP/LIME, Model Cards, bias auditing
+16. **Phase 16: Admin & Analytics** - Control panel, real-time fraud analytics
 
 ### 🧠 Phase 9: Advanced ML & Neural Networks
 
@@ -151,7 +152,16 @@ pnpm dev
 | 1 | **SHAP/LIME Explainer** | `explainability/shap_lime_explainer.py` | Feature attribution |
 | 2 | **Model Cards** | `explainability/model_cards.py` | Documentation & bias audits |
 
+### 🎛️ Phase 16: Admin & Real-Time Analytics
+
+| # | Module | File | Purpose |
+|---|--------|------|---------|
+| 1 | **Real-Time Analytics** | `antifraud/analytics/realtime_engine.py` | Streaming fraud detection |
+| 2 | **Admin Control Panel** | `admin/control_panel.py` | RBAC & audit logging |
+| 3 | **Live Dashboard** | `admin/live_dashboard.py` | WebSocket real-time updates |
+
 ## 🔒 Security & Compliance
+
 
 - FedRAMP High certified
 - CISA EI-ISAC compliant
