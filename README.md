@@ -160,7 +160,35 @@ pnpm dev
 | 2 | **Admin Control Panel** | `admin/control_panel.py` | RBAC & audit logging |
 | 3 | **Live Dashboard** | `admin/live_dashboard.py` | WebSocket real-time updates |
 
-## 🔒 Security & Compliance
+#### � Real-Time Fraud Analytics Engine
+
+| Feature | Description |
+|---------|-------------|
+| **Sliding Windows** | 60-second velocity tracking, 5-minute fraud score aggregation |
+| **Multi-Check Pipeline** | ML score, velocity anomaly, geographic velocity, bot detection, replay attack |
+| **Alert Classification** | INFO → WARNING → HIGH → CRITICAL severity levels |
+| **Automatic Recommendations** | ACCEPT / FLAG_FOR_AUDIT / MANUAL_REVIEW / REJECT |
+
+#### 🎛️ Admin Control Panel
+
+| Feature | Description |
+|---------|-------------|
+| **RBAC** | 6 roles: SUPER_ADMIN, ELECTION_ADMIN, SECURITY_ADMIN, AUDITOR, OPERATOR, VIEWER |
+| **Permissions** | 15+ granular permissions for elections, votes, fraud, users, system |
+| **Audit Logging** | Complete trail for all admin actions |
+| **Election Management** | Create, start, end elections with authorization |
+
+#### 📡 Live Dashboard WebSocket Service
+
+| Feature | Description |
+|---------|-------------|
+| **Real-Time Updates** | Sub-second metric broadcasts |
+| **Topic Subscriptions** | metrics, alerts, votes channels |
+| **Widget Data** | Vote maps, velocity charts, fraud distributions |
+| **Multi-Connection** | Handle thousands of concurrent admin connections |
+
+## �🔒 Security & Compliance
+
 
 
 - FedRAMP High certified
